@@ -103,8 +103,9 @@
                 //attempt to execute prepared statement
                 if ($stmt->execute()){
                     //redirect to main 
-                    $_SESSION['name'] = $name;
-                    header('location: test.php');
+                    session_start();
+                    $_SESSION['email'] = $email;
+                    header('location: index.php');
                 }else{
                     echo 'Something went wrong. Please try again later.';
                 }

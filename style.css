@@ -62,7 +62,7 @@ a {
 }
 
 a:hover {
-    color: #333;
+    text-shadow: #189AB4;
 }
 
 .insert form .full{

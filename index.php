@@ -68,6 +68,7 @@
                         }
                     }else{
                         $email_err = "No account with this email address could be found.";
+                        header('location: register.php');
                     }
                 }else{
                     echo "Oops! Something went wrong. Please try again later.";
@@ -98,7 +99,7 @@
             <div class="insert animate__animated animate__bounceInLeft" >
                <form action="index.php" method="post" >
                     <p>
-                        <input type="email" name="email" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email" value="<?php if (empty($_SESSION['email'])){echo "";}else{echo $_SESSION['email'];}?>">
                         <?php echo $email_err;?>
                     </p>
                     <p>
