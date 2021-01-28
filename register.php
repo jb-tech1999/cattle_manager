@@ -11,12 +11,13 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //validate email
         if(empty(trim($_POST["Email"]))){
-            $name_err = 'Please enter your Email.';
+            $email_err = 'Please enter your Email.';
         }else{
             //Prepare statement
             $sql = 'SELECT userID from users WHERE email = ?';
 
             if ($stmt = $mysqli->prepare($sql)){
+               // echo "50";
                 //bind variables to the prepared statement
                 $stmt->bind_param('s', $param_email);
 
@@ -32,6 +33,7 @@
                         $email_err = 'Email is already in use.';
                     }else{
                         $email = trim($_POST['Email']);
+                        echo $email;
                     }
                 }else{
                     echo "Oops! Something went wrong";
@@ -47,7 +49,7 @@
             $password_err = "Password must have atleast 6 characters";
         }else{
             $password = trim($_POST['password']);
-            echo '1';
+            
         }
 
         //validate confirm password
@@ -55,7 +57,7 @@
             $check_pass_err = "Please confirm password";
         }else{
             $check_pass = trim($_POST['check_pass']);
-            echo '2';
+           
             if (empty($password_err) && ($password != $check_pass)){
                 $check_pass_err = "Passwords did not match";
             }
@@ -65,33 +67,34 @@
             $name_err = "Please enter your name.";
         }else{
             $name = trim($_POST['Name']);
-            echo '3';
+            
         }
 
         if (empty(trim($_POST['Surname']))){
             $surname_err = "Please enter your surname.";
         }else{
             $surname = trim($_POST['Surname']);
-            echo '4';
+            
         }
 
         if (empty(trim($_POST['Cell']))){
             $cell_err = "Please enter your cell number.";
         }else{
             $cell = trim($_POST['Cell']);
-            echo "5";
+            
         }
-        echo 'ok';
+       
         //if (empty($name_err) && empty($surname_err) && empty($email_err) && empty($cell_err) && empty($password) && empty($check_pass_err)){
-            echo 'yes';
+            
             //prepare insert statement
 
             $sql = "INSERT INTO users (name, surname, email, cell, password) VALUES(?, ?, ?, ?, ?)";
-
+           // echo "0";
             if ($stmt = $mysqli->prepare($sql)){
+              //  echo "0.3";
                 //bind variables to the prepared statement as parameters
                 $stmt->bind_param("sssss", $param_name, $param_surname, $param_email, $param_cell, $param_password);
-
+               // echo "1";
                 //set parameters
                 $param_name = $name;
                 $param_surname = $surname;
@@ -113,6 +116,8 @@
                 //close statement
                 $stmt->close();
 
+            }else{
+                echo "nope";
             }
        // }
         $mysqli->close();

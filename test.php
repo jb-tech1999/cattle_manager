@@ -1,3 +1,84 @@
+<?php
+    session_start();
+   // echo $_SESSION['id'];
+    //add config file
+    include_once 'config.php';
+
+    //define Variables and initialize with empty values
+    $number = $mnumber = $dnumber = $dob = '';
+    $number_err = '';
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        //validate Animal number
+        if (empty(trim($_POST['Number']))){
+            $number_err = "Please enter a number";
+        }else{
+            //Prepare statement 
+            $sql = "SELECT id FROM animals WHERE id = ?";
+
+            if ($stmt = $mysqli->prepare($sql)){
+                $stmt->bind_param('s', $param_number); 
+                //set parameter
+                $param_number = trim($_POST['Number']);
+
+                //attempt to execute
+                if ($stmt->execute()){
+                    $stmt->store_result();
+
+                    if ($stmt->num_rows == 1){
+                        $number_err = "This number already exists";
+                    }else{
+                        $number = trim($_POST['Number']);
+                        $mnumber = trim($_POST['momID']);
+                        $dnumber = trim($_POST['dadID']);
+                        $dob = $_POST['dob'];
+                        
+                    }
+                }else{
+                    echo "Oops! Somthing went wrong!";
+                }
+            }
+            //close statement
+            $stmt->close();
+        }
+        if (empty($number_err)){
+            //prepare sql statement
+            $sql = " INSERT INTO animals(id, maID, paID, eienaarID, dob) VALUES(?,?,?,?,?)";
+
+            if ($stmt = $mysqli->prepare($sql)){
+
+                //Bind variables
+                $stmt->bind_param('sssss', $param_number, $param_ma, $param_pa, $param_own, $param_dob);
+
+                //set parameters
+                $param_number = $number;
+                $param_ma = $mnumber;
+                $param_pa = $dnumber;
+                $param_own = $_SESSION['id'];
+                $param_dob = $dob;
+
+                //attempt to execute
+                if ($stmt->execute()){
+                    echo '<script type="text/javascript">';
+                    echo ' alert("Animal has been added")';
+                    echo '</script>';
+                }else{
+                    echo 'Oops, somthing went wrong. Please try again later.';
+                }
+                //close staement
+                $stmt->close();
+
+            }
+
+        }
+        $mysqli->close();
+
+    }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +90,18 @@
 </head>
 <body>
     <div class="container">
+    <div class="header">
         <h1 class="brand animate__animated animate__heartBeat">Cattle Manager</h1>
-        <h1 class="brand animate__animated animate__heartBeat"><?php session_start(); echo 'Welcome, ' . $_SESSION['name'];?></h1>
+        
+    </div>
         <div class="wrapper" >
             <div class="insert animate__animated animate__bounceInLeft" >
-               <form action="insert.php" method="post" >
+               <form action="test.php" method="post" >
+                    <p><h3 class="brand animate__animated animate__heartBeat"><?php echo 'Welcome, ' . $_SESSION['name'];?></h3></p>
                     <p>
                         <input type="text" name="Number" placeholder="Animal Number">
+                        <?php echo $number_err; ?>
+                         
                     </p>
                     <p>
                         <input type="text"  name="momID" placeholder="Animal Mother Number">
@@ -27,8 +113,14 @@
                         <input type="date"  name="dob" placeholder="Date of Birth">
                     </p>
                     <p>
-                        <input type="submit" name="submit" placeholder="Save" class="full">
+                        <input type="submit" name="submit" value="Add Animal" class="full">
                     </p>
+                    <form action="export.php" method="post">
+                        <p>
+                            <input type="submit" name="export" class="full" value="Export">
+                        </p>
+                    </form>
+                   
                </form> 
                
             </div>

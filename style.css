@@ -8,6 +8,10 @@ body{
     color: #ffffff;
     text-align: center;
 }
+ body a{
+     color: white;
+     text-decoration: none;
+ }
 
 .container{
     max-width:1170px;
@@ -18,10 +22,12 @@ body{
 
 }
 
+
 .brand{
     box-shadow: 0 0 20px 0 rgba(22, 31, 39, 0.7);
     border-radius: 20px;
     width: 60%;
+    
 }
 
 
