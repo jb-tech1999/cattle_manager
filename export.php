@@ -8,7 +8,7 @@
   header('Content-Disposition: attachment; filename=data.csv');
   $output = fopen('php://output', 'w');
 
-  fputcsv($output, array('Number', 'Mom Number', 'Dad', 'Owner', 'Date of Birth'));
+  fputcsv($output, array('Number', 'Mom Number', 'Dad', 'Gender', 'Owner', 'Date of Birth'));
   $query = "SELECT * FROM animals WHERE eienaarID = '$own' ORDER BY maID";
 
   $result = mysqli_query($con, $query);

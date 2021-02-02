@@ -66,7 +66,6 @@
                     echo ' alert("Animal has been added")';
                     echo '</script>';
                 }else{
-                    echo $mysqli_error();
                     echo '<script type="text/javascript">';
                     echo ' alert("Animal could not be added")';
                     echo '</script>';
