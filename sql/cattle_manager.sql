@@ -32,7 +32,7 @@ CREATE TABLE `animals` (
   `maID` varchar(11) NOT NULL,
   `paID` varchar(11) NOT NULL,
   `eienaarID` int(11) NOT NULL,
-  `dob` int(11) NOT NULL
+  `dob` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
