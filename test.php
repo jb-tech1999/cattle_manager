@@ -8,7 +8,7 @@
     $number = $mnumber = $dnumber = $dob = '';
     $number_err = '';
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_POST['submit']){
         //validate Animal number
         if (empty(trim($_POST['Number']))){
             $number_err = "Please enter a number";
@@ -31,6 +31,7 @@
                         $number = trim($_POST['Number']);
                         $mnumber = trim($_POST['momID']);
                         $dnumber = trim($_POST['dadID']);
+                        $gender = trim($_POST['gender']);
                         $dob = $_POST['dob'];
                         
                     }
@@ -43,17 +44,18 @@
         }
         if (empty($number_err)){
             //prepare sql statement
-            $sql = " INSERT INTO animals(id, maID, paID, eienaarID, dob) VALUES(?,?,?,?,?)";
+            $sql = " INSERT INTO animals(id, maID, paID, gender, eienaarID, dob) VALUES(?,?,?,?,?,?)";
 
             if ($stmt = $mysqli->prepare($sql)){
 
                 //Bind variables
-                $stmt->bind_param('sssss', $param_number, $param_ma, $param_pa, $param_own, $param_dob);
+                $stmt->bind_param('ssssis', $param_number, $param_ma, $param_pa, $param_gender, $param_own, $param_dob);
 
                 //set parameters
                 $param_number = $number;
                 $param_ma = $mnumber;
                 $param_pa = $dnumber;
+                $param_gender = $gender;
                 $param_own = $_SESSION['id'];
                 $param_dob = $dob;
 
@@ -64,6 +66,8 @@
                     echo '</script>';
                 }else{
                     echo 'Oops, somthing went wrong. Please try again later.';
+                    echo '<script type="text/javascript">';
+                    echo '</script>';
                 }
                 //close staement
                 $stmt->close();
@@ -72,6 +76,10 @@
 
         }
         $mysqli->close();
+
+    }
+    if ($_POST['export']){
+        header("location: export.php");
 
     }
 
@@ -110,16 +118,22 @@
                         <input type="text"  name="dadID" placeholder="Animal Father Number">
                     </p>
                     <p>
+                        <select name="gender" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>   
+                        </select>
+                    </p>
+                    <p>
                         <input type="date"  name="dob" placeholder="Date of Birth">
                     </p>
                     <p>
                         <input type="submit" name="submit" value="Add Animal" class="full">
                     </p>
-                    <form action="export.php" method="post">
-                        <p>
-                            <input type="submit" name="export" class="full" value="Export">
-                        </p>
-                    </form>
+                    
+                    <p>
+                        <input type="submit" name="export" class="full" value="Export">
+                    </p>
+                    
                    
                </form> 
                

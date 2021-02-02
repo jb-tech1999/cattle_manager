@@ -54,6 +54,13 @@
                         $stmt->bind_result($userID, $name, $email, $hased_password);
                         if ($stmt->fetch()){
                             if (password_verify($password, $hased_password)){
+
+                                $to = $email;
+                                $subject = "Recent log in";
+                                $message = "Hi, you've just logged in to your cattle-manager account.";
+                                $headers = "From: Jandé <jandre@cattle-manager.co.za>\r\n";
+                                $headers .= "Reply-To: jandre@cattle-manager.co.za\r\n";
+                                mail($to, $subject, $message, $headers);
                                 //password correct, start new session
                                 session_start();
                                 $_SESSION['loggedin'] = true;
