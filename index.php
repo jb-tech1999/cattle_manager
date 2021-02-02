@@ -57,7 +57,7 @@
 
                                 $to = $email;
                                 $subject = "Recent log in";
-                                $message = "Hi, you've just logged in to your cattle-manager account.";
+                                $message = "Hi, " . $name . " you've just logged in to your cattle-manager account.";
                                 $headers = "From: Jandé <jandre@cattle-manager.co.za>\r\n";
                                 $headers .= "Reply-To: jandre@cattle-manager.co.za\r\n";
                                 mail($to, $subject, $message, $headers);

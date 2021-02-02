@@ -118,7 +118,7 @@
                         <input type="text"  name="dadID" placeholder="Animal Father Number">
                     </p>
                     <p>
-                        <select name="gender" id="gender">
+                        <select name="gender" id="gender" >
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>   
                         </select>

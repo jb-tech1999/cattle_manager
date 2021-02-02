@@ -1,8 +1,9 @@
 <?php
     //Adding database credentials
-
-   // $link = mysqli_connect('localhost', 'root', '' , 'cattle_manager');
+    //Fill in your own credentials
+   // $link = mysqli_connect('host', 'user', 'password' , 'database');
     $mysqli = new mysqli('localhost', 'root', '' , 'cattle_manager');
+    $con = mysql_connect('localhost', 'root', '' , 'cattle_manager');
   
 
     //check connection

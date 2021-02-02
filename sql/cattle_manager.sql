@@ -39,8 +39,6 @@ CREATE TABLE `animals` (
 -- Dumping data for table `animals`
 --
 
-INSERT INTO `animals` (`id`, `maID`, `paID`, `eienaarID`, `dob`) VALUES
-('2100', '1504', 'Ben', 4, 2021);
 
 -- --------------------------------------------------------
 
@@ -61,10 +59,6 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `name`, `surname`, `email`, `cell`, `password`) VALUES
-(4, 'Jandre', 'Badenhorst', 'jandrebad@gmail.com', '0732575385', '$2y$10$Cw6ktc7AMLI52QPVv.IoI.5AOwO57jiu./y9Zeasnp9Jpw7RZsCw.'),
-(5, 'Waldo', 'Meyer', 'waldo010123@gmail.com', '0605262498', '$2y$10$QU.NRQ3rnDgWELtsQaMF2eiURVy6EMjjEiQy2rlZoeGzD3zju3.AG'),
-(7, 'Pieter', 'Aarde', 'pieteraar@webmail.co.za', '0732575386', '$2y$10$0ngPfF4BfgczpVvVFXIM8OpeC16c3sAWt7x2vLO2GBOs31s/FtG6C');
 
 --
 -- Indexes for dumped tables
