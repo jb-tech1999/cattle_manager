@@ -84,7 +84,7 @@
                 $stmt->close();
             }
         }
-        //close ceonnection
+        //close connection
         $mysqli->close();
     }
 
@@ -117,6 +117,7 @@
                         <input type="submit" name="submit"  class="full" value="Login">
                     </p>
                     <p>Don't have an account? <a href="register.php">Click here</a></p>
+                    <p>Forgot password? <a href="mail.php">Click here</a></p>
                </form> 
             </div>
         </div>
