@@ -28,7 +28,7 @@
                         $to = $email;
                         $subject = "Password reset";
                         $message = "Hi, please follow the link to reset your password. https://cattle-manager.co.za/reset_password.php";
-                        $headers = "From: Jandé <jandre@cattle-manager.co.za>\r\n";
+                        $headers = "From: Jandré <jandre@cattle-manager.co.za>\r\n";
                         $headers .= "Reply-To: jandre@cattle-manager.co.za\r\n";
                         $_SESSION['email'] = $email;
                         mail($to, $subject, $message, $headers); 

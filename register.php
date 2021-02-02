@@ -108,7 +108,7 @@
                     $to = $email;
                     $subject = "Thank you for signing up to cattle-manager.co.za";
                     $message = "Hi," . $name . " welcome to cattle-manager.co.za";
-                    $headers = "From: Jandé <jandre@cattle-manager.co.za>\r\n";
+                    $headers = "From: Jandré <jandre@cattle-manager.co.za>\r\n";
                     $headers .= "Reply-To: jandre@cattle-manager.co.za\r\n";
                     mail($to, $subject, $message, $headers);
 

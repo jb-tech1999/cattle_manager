@@ -24,10 +24,10 @@
                 //attempt to execute
                 if ($stmt->execute()){
                     $stmt->store_result();
-
                     if ($stmt->num_rows == 1){
                         $number_err = "This number already exists";
                     }else{
+
                         $number = trim($_POST['Number']);
                         $mnumber = trim($_POST['momID']);
                         $dnumber = trim($_POST['dadID']);
@@ -59,14 +59,16 @@
                 $param_own = $_SESSION['id'];
                 $param_dob = $dob;
 
+
                 //attempt to execute
                 if ($stmt->execute()){
                     echo '<script type="text/javascript">';
                     echo ' alert("Animal has been added")';
                     echo '</script>';
                 }else{
-                    echo 'Oops, somthing went wrong. Please try again later.';
+                    echo $mysqli_error();
                     echo '<script type="text/javascript">';
+                    echo ' alert("Animal could not be added")';
                     echo '</script>';
                 }
                 //close staement
@@ -112,10 +114,10 @@
                          
                     </p>
                     <p>
-                        <input type="text"  name="momID" placeholder="Animal Mother Number">
+                        <input type="text"  name="momID" placeholder="Mother">
                     </p>
                     <p>
-                        <input type="text"  name="dadID" placeholder="Animal Father Number">
+                        <input type="text"  name="dadID" placeholder="Father">
                     </p>
                     <p>
                         <select name="gender" id="gender" >
