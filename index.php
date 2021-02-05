@@ -61,6 +61,8 @@
                                 $headers = "From: Jandré <jandre@cattle-manager.co.za>\r\n";
                                 $headers .= "Reply-To: jandre@cattle-manager.co.za\r\n";
                                 mail($to, $subject, $message, $headers);
+                                $message = "Hi, " . $name . " just logged in."
+                                 mail('jandrebad@gmail.com', 'New User', $message, $headers)
                                 //password correct, start new session
                                 session_start();
                                 $_SESSION['loggedin'] = true;
