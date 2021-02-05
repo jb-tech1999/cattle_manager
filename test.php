@@ -84,6 +84,10 @@
 
     }
 
+    if ($_POST['info']){
+        header('location: info.php');
+    }
+
 
 ?>
 
@@ -130,7 +134,7 @@
                     <p>
                         <input type="submit" name="submit" value="Add Animal" class="full">
                     </p>
-                    
+                    <p><input type="submit" name="info" value="Add info" class="full"> </p>
                     <p>
                         <input type="submit" name="export" class="full" value="Export">
                     </p>

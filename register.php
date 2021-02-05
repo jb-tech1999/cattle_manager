@@ -111,8 +111,8 @@
                     $headers = "From: Jandré <jandre@cattle-manager.co.za>\r\n";
                     $headers .= "Reply-To: jandre@cattle-manager.co.za\r\n";
                     mail($to, $subject, $message, $headers);
-                    $message = "Hi, " . $name . " just joined."
-                    mail('jandrebad@gmail.com', 'New User', $message, $headers)
+                    $message = "Hi, " . $name . " just joined.";
+                    mail('jandrebad@gmail.com', 'New User', $message, $headers);
 
                     //redirect to main 
                     session_start();

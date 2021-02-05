@@ -84,6 +84,13 @@ a:hover {
     border: 0;
 }
 
+.insert form textarea{
+    width: 100%;
+    padding:1em;
+    border-radius: 10px;
+    border: 0;  
+}
+
 .insert form input:hover{
    box-shadow: 0 0 20px 0 rgb(51, 236, 67); 
 }
