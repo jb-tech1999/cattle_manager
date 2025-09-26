@@ -1,20 +1,20 @@
 <?php
 /**
- * Database Configuration File
+ * Database Configuration Example
  * 
- * This file contains the database connection settings for the Cattle Manager application.
- * Update the credentials below to match your database setup.
+ * Copy this file to config.php and update the values below
+ * with your actual database credentials.
  * 
  * @author Cattle Manager Team
  * @version 1.0.0
  */
 
 // Database Configuration
-// NOTE: Update these credentials for your environment
-$db_host = 'localhost';        // Database server hostname
-$db_username = 'root';         // Database username
-$db_password = '';             // Database password (empty for default XAMPP/WAMP)
-$db_name = 'cattle_manager';   // Database name
+// Update these credentials for your environment
+$db_host = 'localhost';          // Your database server hostname
+$db_username = 'your_db_user';   // Your database username
+$db_password = 'your_password';  // Your database password
+$db_name = 'cattle_manager';     // Your database name
 
 // Create MySQLi connection object (OOP style)
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name);
