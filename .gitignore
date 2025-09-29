@@ -1,0 +1,59 @@
+# Cattle Manager - Git Ignore File
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# Log files
+*.log
+error.log
+access.log
+
+# Cache directories
+cache/
+tmp/
+
+# Environment-specific configuration
+.env
+config.local.php
+
+# Backup files
+*.bak
+*.backup
+backup_*.sql
+
+# Upload directories (if added in future)
+uploads/
+files/
+
+# Composer dependencies (if added in future)
+vendor/
+composer.lock
+
+# Node.js dependencies (if added in future)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Build artifacts
+dist/
+build/
+
+# OS generated files
+*.swp
+*.swo
+*~
+
+# Database connection test files
+test_connection.php
+debug.php
